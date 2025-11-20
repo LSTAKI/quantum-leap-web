@@ -1,32 +1,111 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Instagram, Linkedin, Twitter, Github, Mail, Calendar, MapPin, ChevronDown, MessageCircle, MessageSquare, Code, GraduationCap, Lightbulb, FileText, BookOpen } from "lucide-react";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Instagram, Linkedin, Twitter, Github, Mail, Calendar, MapPin, ChevronDown, MessageCircle, MessageSquare, Code, GraduationCap, Lightbulb, FileText, BookOpen, Award, Mic } from "lucide-react";
 import { useState } from "react";
 import quantumHero from "@/assets/quantum-hero.png";
 import event1 from "@/assets/event1.jpg";
 import event2 from "@/assets/event2.jpg";
 import event3 from "@/assets/event3.jpg";
+import { QuantumBackground } from "@/components/QuantumBackground";
+import { TopNav } from "@/components/TopNav";
 
 const Index = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedMember, setSelectedMember] = useState<{ name: string; role: string; description: string; image: string } | null>(null);
 
   const universityLeadership = [
-    { name: "Dr. [Vice Chancellor Name]", title: "Vice Chancellor, VTU", image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop" },
-    { name: "Prof. [Registrar Name]", title: "Registrar, VTU", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop" },
-    { name: "Prof. [Registrar Evaluation Name]", title: "Registrar (Evaluation), VTU", image: "https://images.unsplash.com/photo-1556157382-97eda2d62296?w=400&h=400&fit=crop" },
+    { 
+      name: "Dr. [Vice Chancellor Name]", 
+      title: "Vice Chancellor, VTU", 
+      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop",
+      message: "Welcome to Quantum Club VTU. We are committed to fostering innovation and excellence in quantum computing research and education."
+    },
+    { 
+      name: "Prof. [Registrar Name]", 
+      title: "Registrar, VTU", 
+      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop",
+      message: "Supporting student initiatives like Quantum Club is essential for preparing our students for the technological challenges of tomorrow."
+    },
+    { 
+      name: "Prof. [Registrar Evaluation Name]", 
+      title: "Registrar (Evaluation), VTU", 
+      image: "https://images.unsplash.com/photo-1556157382-97eda2d62296?w=400&h=400&fit=crop",
+      message: "The Quantum Club represents the cutting-edge of student-led research and innovation at VTU."
+    },
+    { 
+      name: "Dr. [Finance Officer Name]", 
+      title: "Finance Officer, VTU", 
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop",
+      message: "We are proud to support student clubs that contribute to academic excellence and practical skill development."
+    },
+    { 
+      name: "Prof. [Student Welfare Dean Name]", 
+      title: "Dean of Student Welfare, VTU", 
+      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop",
+      message: "Student clubs like Quantum Club are vital in creating a vibrant campus culture focused on learning and collaboration."
+    },
   ];
 
   const events: any[] = [];
 
+  const chairperson = {
+    name: "[Chairperson Name]",
+    role: "Chairperson",
+    description: "Leading the Quantum Club VTU with a vision to make quantum computing accessible to all students. Passionate about quantum algorithms and their real-world applications.",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop"
+  };
+
   const committees = [
-    { name: "Technical Committee", members: [{ role: "Lead", name: "[Name]", email: "tech@quantumclubvtu.edu" }] },
-    { name: "Social Media Committee", members: [{ role: "Lead", name: "[Name]", email: "social@quantumclubvtu.edu" }] },
-    { name: "Members Development Committee", members: [{ role: "Lead", name: "[Name]", email: "development@quantumclubvtu.edu" }] },
-    { name: "MOC (Anchoring)", members: [{ role: "Lead", name: "[Name]", email: "moc@quantumclubvtu.edu" }] },
-    { name: "Web Designing Committee", members: [{ role: "Lead", name: "[Name]", email: "web@quantumclubvtu.edu" }] },
-    { name: "Event Coordination Committee", members: [{ role: "Lead", name: "[Name]", email: "events@quantumclubvtu.edu" }] },
-    { name: "Treasurer Committee", members: [{ role: "Lead", name: "[Name]", email: "treasurer@quantumclubvtu.edu" }] },
+    { 
+      name: "Technical Committee", 
+      lead: { 
+        name: "[Lead Name]", 
+        description: "Coordinates technical workshops and hands-on quantum computing sessions. Expert in Qiskit and quantum circuit design.",
+        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop"
+      }
+    },
+    { 
+      name: "Social Media Committee", 
+      lead: { 
+        name: "[Lead Name]", 
+        description: "Manages all social media platforms and digital presence. Creates engaging content to showcase club activities and quantum concepts.",
+        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop"
+      }
+    },
+    { 
+      name: "Members Development Committee", 
+      lead: { 
+        name: "[Lead Name]", 
+        description: "Focuses on member growth and skill development. Organizes mentorship programs and learning paths for quantum computing.",
+        image: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=400&h=400&fit=crop"
+      }
+    },
+    { 
+      name: "Web Designing Committee", 
+      lead: { 
+        name: "[Lead Name]", 
+        description: "Develops and maintains the club website and digital platforms. Ensures a seamless online experience for all members.",
+        image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop"
+      }
+    },
+    { 
+      name: "Event Coordination Committee", 
+      lead: { 
+        name: "[Lead Name]", 
+        description: "Plans and executes all club events, workshops, and competitions. Ensures smooth logistics and memorable experiences.",
+        image: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=400&h=400&fit=crop"
+      }
+    },
+    { 
+      name: "Treasurer Committee", 
+      lead: { 
+        name: "[Lead Name]", 
+        description: "Manages club finances, budgets, and sponsorships. Ensures transparent financial operations and resource allocation.",
+        image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop"
+      }
+    },
   ];
 
   const facultyAdvisors = [
@@ -65,7 +144,10 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
-      <section id="hero" className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-[#020617] via-[#0F172A] to-[#020617]">
+      <QuantumBackground />
+      <TopNav />
+      
+      <section id="hero" className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-[#020617]/90 via-[#0F172A]/90 to-[#020617]/90">
         <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
             <h1 className="text-6xl md:text-7xl font-bold text-primary">Quantum Club VTU</h1>
@@ -92,15 +174,37 @@ const Index = () => {
         <div className="max-w-7xl mx-auto"><h2 className="text-4xl font-bold mb-6">About Quantum Club VTU</h2><p className="text-lg text-muted-foreground">Student-driven quantum computing community at VTU.</p></div>
       </section>
 
-      <section className="py-24 px-4 bg-[#0F172A]">
-        <div className="max-w-7xl mx-auto"><h2 className="text-4xl font-bold text-center mb-16">University Leadership</h2>
-          <div className="grid md:grid-cols-3 gap-8">{universityLeadership.map((l, i) => <Card key={i} className="p-6"><img src={l.image} alt={l.name} className="w-32 h-32 rounded-full mx-auto mb-4" /><h3 className="text-xl font-bold text-center">{l.name}</h3><p className="text-sm text-primary text-center">{l.title}</p></Card>)}</div>
+      <section className="py-24 px-4 bg-[#0F172A]/90">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-16">University Leadership</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {universityLeadership.map((l, i) => (
+              <Card key={i} className="p-6">
+                <img src={l.image} alt={l.name} className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-primary/20" />
+                <h3 className="text-xl font-bold text-center mb-2">{l.name}</h3>
+                <p className="text-sm text-primary text-center mb-4">{l.title}</p>
+                <div className="bg-muted/50 rounded-lg p-4 mt-4">
+                  <p className="text-sm text-muted-foreground italic text-center leading-relaxed">"{l.message}"</p>
+                </div>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="py-24 px-4 bg-[#020617]">
-        <div className="max-w-7xl mx-auto"><h2 className="text-4xl font-bold text-center mb-16">Faculty Advisors</h2>
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">{facultyAdvisors.map((a, i) => <Card key={i} className="p-6"><img src={a.image} alt={a.name} className="w-32 h-32 rounded-full mx-auto mb-4" /><h3 className="text-xl font-bold text-center">{a.name}</h3><p className="text-sm text-primary text-center mb-2">{a.title}</p><p className="text-sm text-muted-foreground text-center">{a.bio}</p></Card>)}</div>
+      <section className="py-24 px-4 bg-[#020617]/90">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-16">Faculty Advisors</h2>
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {facultyAdvisors.map((a, i) => (
+              <Card key={i} className="p-6">
+                <img src={a.image} alt={a.name} className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-primary/20" />
+                <h3 className="text-xl font-bold text-center">{a.name}</h3>
+                <p className="text-sm text-primary text-center mb-2">{a.title}</p>
+                <p className="text-sm text-muted-foreground text-center">{a.bio}</p>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -117,11 +221,72 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="committees" className="py-24 px-4 bg-[#0F172A]">
-        <div className="max-w-7xl mx-auto"><h2 className="text-4xl font-bold text-center mb-16">Our Committees</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">{committees.map((c, i) => <Card key={i} className="p-6"><h3 className="text-xl font-bold text-primary text-center mb-4">{c.name}</h3>{c.members.map((m: any, j: number) => <div key={j} className="text-center mb-2"><p className="text-sm font-medium">{m.role}</p><p className="text-sm text-muted-foreground">{m.name}</p><a href={`mailto:${m.email}`} className="text-xs text-primary">Contact</a></div>)}</Card>)}</div>
+      <section id="committees" className="py-24 px-4 bg-[#0F172A]/90">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-16">Our Team</h2>
+          
+          {/* Chairperson */}
+          <div className="max-w-md mx-auto mb-16">
+            <Card 
+              className="p-8 cursor-pointer hover:scale-105 transition-transform duration-300 hover:border-primary/50"
+              onClick={() => setSelectedMember(chairperson)}
+            >
+              <img 
+                src={chairperson.image} 
+                alt={chairperson.name} 
+                className="w-40 h-40 rounded-full mx-auto mb-4 object-cover border-4 border-primary" 
+              />
+              <h3 className="text-2xl font-bold text-center mb-2">{chairperson.name}</h3>
+              <p className="text-md text-primary text-center font-semibold">{chairperson.role}</p>
+            </Card>
+          </div>
+
+          {/* Committees */}
+          <h3 className="text-3xl font-bold text-center mb-12">Committees</h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {committees.map((c, i) => (
+              <Card 
+                key={i} 
+                className="p-6 cursor-pointer hover:scale-105 transition-transform duration-300 hover:border-primary/50"
+                onClick={() => setSelectedMember({ ...c.lead, role: `${c.name} Lead` })}
+              >
+                <h3 className="text-xl font-bold text-primary text-center mb-6">{c.name}</h3>
+                <img 
+                  src={c.lead.image} 
+                  alt={c.lead.name} 
+                  className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-primary/20" 
+                />
+                <p className="text-lg font-medium text-center">{c.lead.name}</p>
+                <p className="text-sm text-muted-foreground text-center mt-2">Lead</p>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
+
+      {/* Member Details Dialog */}
+      <Dialog open={!!selectedMember} onOpenChange={() => setSelectedMember(null)}>
+        <DialogContent className="max-w-md">
+          {selectedMember && (
+            <>
+              <DialogHeader>
+                <div className="flex flex-col items-center mb-4">
+                  <img 
+                    src={selectedMember.image} 
+                    alt={selectedMember.name} 
+                    className="w-32 h-32 rounded-full object-cover border-4 border-primary mb-4" 
+                  />
+                  <DialogTitle className="text-2xl text-center">{selectedMember.name}</DialogTitle>
+                  <p className="text-primary font-semibold text-center mt-2">{selectedMember.role}</p>
+                </div>
+              </DialogHeader>
+              <DialogDescription className="text-center text-base leading-relaxed">
+                {selectedMember.description}
+              </DialogDescription>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
 
       <section className="py-24 px-4 bg-[#020617]">
         <div className="max-w-7xl mx-auto"><h2 className="text-4xl font-bold text-center mb-16">Join Our Community</h2>
@@ -129,15 +294,65 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="resources" className="py-24 px-4 bg-[#0F172A]">
-        <div className="max-w-7xl mx-auto"><h2 className="text-4xl font-bold text-center mb-16">Learning Resources</h2>
-          <div className="grid md:grid-cols-4 gap-6">{resources.map((r, i) => <Card key={i} className="p-6 text-center"><div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-4"><r.icon className="h-7 w-7 text-primary" /></div><h3 className="text-lg font-bold mb-2">{r.title}</h3><p className="text-sm text-muted-foreground">{r.description}</p></Card>)}</div>
+      <section id="resources" className="py-24 px-4 bg-[#0F172A]/90">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-16">Learning Resources</h2>
+          <div className="grid md:grid-cols-4 gap-6">
+            {resources.map((r, i) => (
+              <Card key={i} className="p-6 text-center hover:scale-105 transition-transform duration-300">
+                <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                  <r.icon className="h-7 w-7 text-primary" />
+                </div>
+                <h3 className="text-lg font-bold mb-2">{r.title}</h3>
+                <p className="text-sm text-muted-foreground">{r.description}</p>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section id="blog" className="py-24 px-4 bg-[#020617]">
-        <div className="max-w-7xl mx-auto"><h2 className="text-4xl font-bold text-center mb-16">Latest from Our Blog</h2>
-          <div className="grid md:grid-cols-2 gap-8">{recentBlogPosts.map((p, i) => <Card key={i}><div className="aspect-video overflow-hidden"><img src={p.image} alt={p.title} className="w-full h-full object-cover" /></div><CardHeader><CardTitle>{p.title}</CardTitle><CardDescription>{p.excerpt}</CardDescription></CardHeader></Card>)}</div>
+      <section id="blog" className="py-24 px-4 bg-[#020617]/90">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-16">Latest from Our Blog</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            {recentBlogPosts.map((p, i) => (
+              <Card key={i} className="hover:scale-105 transition-transform duration-300">
+                <div className="aspect-video overflow-hidden">
+                  <img src={p.image} alt={p.title} className="w-full h-full object-cover" />
+                </div>
+                <CardHeader>
+                  <CardTitle>{p.title}</CardTitle>
+                  <CardDescription>{p.excerpt}</CardDescription>
+                </CardHeader>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="nobel" className="py-24 px-4 bg-[#0F172A]/90">
+        <div className="max-w-7xl mx-auto text-center">
+          <Award className="h-16 w-16 text-primary mx-auto mb-6" />
+          <h2 className="text-4xl font-bold mb-8">Nobel Prize in Quantum Computing</h2>
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
+            Celebrating groundbreaking achievements in quantum computing and recognizing the pioneers who are shaping the future of technology.
+          </p>
+          <Card className="p-8 max-w-2xl mx-auto">
+            <p className="text-muted-foreground">Nobel Prize content and winners will be featured here. Check back soon for updates on quantum computing breakthroughs and their impact on science.</p>
+          </Card>
+        </div>
+      </section>
+
+      <section id="podcast" className="py-24 px-4 bg-[#020617]/90">
+        <div className="max-w-7xl mx-auto text-center">
+          <Mic className="h-16 w-16 text-primary mx-auto mb-6" />
+          <h2 className="text-4xl font-bold mb-8">Quantum Club Podcast</h2>
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
+            Tune in to our podcast series featuring discussions on quantum computing, interviews with researchers, and insights into the latest developments in the field.
+          </p>
+          <Card className="p-8 max-w-2xl mx-auto">
+            <p className="text-muted-foreground">Podcast episodes coming soon! Subscribe to stay updated on our latest quantum computing discussions and expert interviews.</p>
+          </Card>
         </div>
       </section>
 
