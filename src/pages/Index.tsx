@@ -149,41 +149,44 @@ const Index = () => {
       
       <section id="hero" className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-[#020617]/90 via-[#0F172A]/90 to-[#020617]/90">
         <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8">
-            <h1 className="text-6xl md:text-7xl font-bold text-primary">Quantum Club VTU</h1>
-            <p className="text-2xl text-foreground">Exploring the future of computation</p>
-            <div className="flex gap-4">
-              <Button variant="hero" size="lg">Join the Club</Button>
+            <div className="space-y-8 animate-fade-in">
+              <h1 className="text-6xl md:text-7xl font-bold text-primary animate-fade-in">Quantum Club VTU</h1>
+              <p className="text-2xl text-foreground animate-fade-in" style={{ animationDelay: '0.2s' }}>Exploring the future of computation</p>
             </div>
-          </div>
-          <div><img src={quantumHero} alt="Quantum" className="w-full" /></div>
+            <div className="animate-fade-in" style={{ animationDelay: '0.4s' }}>
+              <img src={quantumHero} alt="Quantum Computing Visualization" className="w-full hover:scale-105 transition-transform duration-700" />
+            </div>
         </div>
       </section>
 
-      <section className="py-8 px-4 bg-[#020617] border-t border-primary/20">
-        <div className="max-w-7xl mx-auto flex flex-wrap justify-center gap-8">
-          {socialMedia.map((s, i) => (
-            <a key={i} href={s.link} className="flex items-center gap-3 text-muted-foreground hover:text-primary">
-              <s.icon className="h-5 w-5" /><span className="text-sm hidden md:inline">{s.label}</span>
-            </a>
-          ))}
-        </div>
-      </section>
 
       <section id="about" className="py-24 px-4 bg-[#020617]">
-        <div className="max-w-7xl mx-auto"><h2 className="text-4xl font-bold mb-6">About Quantum Club VTU</h2><p className="text-lg text-muted-foreground">Student-driven quantum computing community at VTU.</p></div>
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl font-bold mb-8 text-center animate-fade-in">About Quantum Club VTU</h2>
+          <div className="max-w-4xl mx-auto space-y-6 text-lg text-muted-foreground animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <p className="leading-relaxed">
+              Quantum Club VTU is a pioneering student-driven initiative at Visvesvaraya Technological University, dedicated to exploring and advancing the frontiers of quantum computing. We are a vibrant community of curious minds, passionate researchers, and aspiring quantum engineers united by a common vision: to democratize quantum knowledge and inspire the next generation of quantum innovators.
+            </p>
+            <p className="leading-relaxed">
+              Founded on the principles of collaborative learning and hands-on experimentation, our club serves as a bridge between theoretical quantum mechanics and practical quantum computing applications. We organize workshops, seminars, hackathons, and research collaborations that empower students to dive deep into quantum algorithms, quantum circuits, and cutting-edge quantum technologies.
+            </p>
+            <p className="leading-relaxed">
+              Whether you're a beginner curious about qubits and superposition, or an advanced learner working on quantum error correction and quantum machine learning, Quantum Club VTU provides a nurturing environment to explore, experiment, and excel. Join us as we unlock the mysteries of quantum computation and shape the future of technology together.
+            </p>
+          </div>
+        </div>
       </section>
 
       <section className="py-24 px-4 bg-[#0F172A]/90">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-16">University Leadership</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <h2 className="text-4xl font-bold text-center mb-16 animate-fade-in">University Leadership</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
             {universityLeadership.map((l, i) => (
-              <Card key={i} className="p-6">
-                <img src={l.image} alt={l.name} className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-primary/20" />
+              <Card key={i} className="p-6 w-full max-w-sm hover:scale-105 transition-transform duration-300 animate-fade-in" style={{ animationDelay: `${i * 0.1}s` }}>
+                <img src={l.image} alt={l.name} className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-primary/20 hover:border-primary transition-colors duration-300" />
                 <h3 className="text-xl font-bold text-center mb-2">{l.name}</h3>
                 <p className="text-sm text-primary text-center mb-4">{l.title}</p>
-                <div className="bg-muted/50 rounded-lg p-4 mt-4">
+                <div className="bg-muted/50 rounded-lg p-4 mt-4 hover:bg-muted/70 transition-colors duration-300">
                   <p className="text-sm text-muted-foreground italic text-center leading-relaxed">"{l.message}"</p>
                 </div>
               </Card>
@@ -356,9 +359,6 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="join" className="py-24 px-4 bg-[#0F172A]">
-        <div className="max-w-4xl mx-auto text-center"><h2 className="text-4xl font-bold mb-16">How to Join</h2><Button size="lg" className="bg-primary">Become a Member</Button></div>
-      </section>
 
       <section id="contact" className="py-24 px-4 bg-[#020617]">
         <div className="max-w-4xl mx-auto text-center"><h2 className="text-4xl font-bold mb-12">Get in Touch</h2><Button size="lg"><Mail className="mr-2 h-5 w-5" />Send us a Message</Button></div>
