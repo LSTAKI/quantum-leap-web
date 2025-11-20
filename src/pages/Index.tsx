@@ -150,11 +150,11 @@ const Index = () => {
       <section id="hero" className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-[#020617]/90 via-[#0F172A]/90 to-[#020617]/90">
         <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-8 animate-fade-in">
-              <h1 className="text-6xl md:text-7xl font-bold text-primary animate-fade-in">Quantum Club VTU</h1>
-              <p className="text-2xl text-foreground animate-fade-in" style={{ animationDelay: '0.2s' }}>Exploring the future of computation</p>
+              <h1 className="text-6xl md:text-7xl font-bold text-primary animate-fade-in hover:scale-105 transition-transform duration-500">Quantum Club VTU</h1>
+              <p className="text-2xl text-foreground animate-fade-in hover:translate-x-2 transition-transform duration-500" style={{ animationDelay: '0.2s' }}>Exploring the future of computation</p>
             </div>
-            <div className="animate-fade-in" style={{ animationDelay: '0.4s' }}>
-              <img src={quantumHero} alt="Quantum Computing Visualization" className="w-full hover:scale-105 transition-transform duration-700" />
+            <div className="animate-fade-in animate-pulse hover:animate-none" style={{ animationDelay: '0.4s' }}>
+              <img src={quantumHero} alt="Quantum Computing Visualization" className="w-full hover:scale-110 hover:rotate-2 transition-all duration-700 animate-fade-in" />
             </div>
         </div>
       </section>
@@ -162,15 +162,15 @@ const Index = () => {
 
       <section id="about" className="py-24 px-4 bg-[#020617]">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold mb-8 text-center animate-fade-in">About Quantum Club VTU</h2>
-          <div className="max-w-4xl mx-auto space-y-6 text-lg text-muted-foreground animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            <p className="leading-relaxed">
+          <h2 className="text-4xl font-bold mb-8 text-center animate-fade-in hover:scale-110 transition-transform duration-500">About Quantum Club VTU</h2>
+          <div className="max-w-4xl mx-auto space-y-6 text-lg text-muted-foreground animate-fade-in hover:translate-x-4 transition-transform duration-700" style={{ animationDelay: '0.2s' }}>
+            <p className="leading-relaxed hover:text-foreground transition-colors duration-500">
               Quantum Club VTU is a pioneering student-driven initiative at Visvesvaraya Technological University, dedicated to exploring and advancing the frontiers of quantum computing. We are a vibrant community of curious minds, passionate researchers, and aspiring quantum engineers united by a common vision: to democratize quantum knowledge and inspire the next generation of quantum innovators.
             </p>
-            <p className="leading-relaxed">
+            <p className="leading-relaxed hover:text-foreground transition-colors duration-500">
               Founded on the principles of collaborative learning and hands-on experimentation, our club serves as a bridge between theoretical quantum mechanics and practical quantum computing applications. We organize workshops, seminars, hackathons, and research collaborations that empower students to dive deep into quantum algorithms, quantum circuits, and cutting-edge quantum technologies.
             </p>
-            <p className="leading-relaxed">
+            <p className="leading-relaxed hover:text-foreground transition-colors duration-500">
               Whether you're a beginner curious about qubits and superposition, or an advanced learner working on quantum error correction and quantum machine learning, Quantum Club VTU provides a nurturing environment to explore, experiment, and excel. Join us as we unlock the mysteries of quantum computation and shape the future of technology together.
             </p>
           </div>
@@ -179,15 +179,15 @@ const Index = () => {
 
       <section className="py-24 px-4 bg-[#0F172A]/90">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-16 animate-fade-in">University Leadership</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+          <h2 className="text-4xl font-bold text-center mb-16 animate-fade-in hover:scale-110 transition-transform duration-500">University Leadership</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-2 justify-items-center">
             {universityLeadership.map((l, i) => (
-              <Card key={i} className="p-6 w-full max-w-sm hover:scale-105 transition-transform duration-300 animate-fade-in" style={{ animationDelay: `${i * 0.1}s` }}>
-                <img src={l.image} alt={l.name} className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-primary/20 hover:border-primary transition-colors duration-300" />
-                <h3 className="text-xl font-bold text-center mb-2">{l.name}</h3>
+              <Card key={i} className="p-6 w-full hover:scale-110 hover:shadow-2xl hover:shadow-primary/50 transition-all duration-500 animate-fade-in hover:z-10" style={{ animationDelay: `${i * 0.1}s` }}>
+                <img src={l.image} alt={l.name} className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-primary/20 hover:border-primary hover:rotate-12 transition-all duration-500 hover:scale-110" />
+                <h3 className="text-xl font-bold text-center mb-2 hover:text-primary transition-colors duration-300">{l.name}</h3>
                 <p className="text-sm text-primary text-center mb-4">{l.title}</p>
-                <div className="bg-muted/50 rounded-lg p-4 mt-4 hover:bg-muted/70 transition-colors duration-300">
-                  <p className="text-sm text-muted-foreground italic text-center leading-relaxed">"{l.message}"</p>
+                <div className="bg-muted/50 rounded-lg p-4 mt-4 hover:bg-primary/20 transition-all duration-500 hover:scale-105">
+                  <p className="text-sm text-muted-foreground italic text-center leading-relaxed hover:text-foreground transition-colors duration-300">"{l.message}"</p>
                 </div>
               </Card>
             ))}
@@ -197,14 +197,14 @@ const Index = () => {
 
       <section className="py-24 px-4 bg-[#020617]/90">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-16">Faculty Advisors</h2>
+          <h2 className="text-4xl font-bold text-center mb-16 animate-fade-in hover:scale-110 transition-transform duration-500">Faculty Advisors</h2>
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {facultyAdvisors.map((a, i) => (
-              <Card key={i} className="p-6">
-                <img src={a.image} alt={a.name} className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-primary/20" />
-                <h3 className="text-xl font-bold text-center">{a.name}</h3>
+              <Card key={i} className="p-6 hover:scale-110 hover:shadow-2xl hover:shadow-primary/50 transition-all duration-500 animate-fade-in" style={{ animationDelay: `${i * 0.15}s` }}>
+                <img src={a.image} alt={a.name} className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-primary/20 hover:border-primary hover:rotate-12 transition-all duration-500 hover:scale-110" />
+                <h3 className="text-xl font-bold text-center hover:text-primary transition-colors duration-300">{a.name}</h3>
                 <p className="text-sm text-primary text-center mb-2">{a.title}</p>
-                <p className="text-sm text-muted-foreground text-center">{a.bio}</p>
+                <p className="text-sm text-muted-foreground text-center hover:text-foreground transition-colors duration-300">{a.bio}</p>
               </Card>
             ))}
           </div>
@@ -231,15 +231,15 @@ const Index = () => {
           {/* Chairperson */}
           <div className="max-w-md mx-auto mb-16">
             <Card 
-              className="p-8 cursor-pointer hover:scale-105 transition-transform duration-300 hover:border-primary/50"
+              className="p-8 cursor-pointer hover:scale-110 hover:shadow-2xl hover:shadow-primary/50 transition-all duration-500 hover:border-primary animate-fade-in"
               onClick={() => setSelectedMember(chairperson)}
             >
               <img 
                 src={chairperson.image} 
                 alt={chairperson.name} 
-                className="w-40 h-40 rounded-full mx-auto mb-4 object-cover border-4 border-primary" 
+                className="w-40 h-40 rounded-full mx-auto mb-4 object-cover border-4 border-primary hover:rotate-12 transition-all duration-500 hover:scale-110" 
               />
-              <h3 className="text-2xl font-bold text-center mb-2">{chairperson.name}</h3>
+              <h3 className="text-2xl font-bold text-center mb-2 hover:text-primary transition-colors duration-300">{chairperson.name}</h3>
               <p className="text-md text-primary text-center font-semibold">{chairperson.role}</p>
             </Card>
           </div>
@@ -250,16 +250,17 @@ const Index = () => {
             {committees.map((c, i) => (
               <Card 
                 key={i} 
-                className="p-6 cursor-pointer hover:scale-105 transition-transform duration-300 hover:border-primary/50"
+                className="p-6 cursor-pointer hover:scale-110 hover:shadow-2xl hover:shadow-primary/50 transition-all duration-500 hover:border-primary animate-fade-in"
                 onClick={() => setSelectedMember({ ...c.lead, role: `${c.name} Lead` })}
+                style={{ animationDelay: `${i * 0.1}s` }}
               >
-                <h3 className="text-xl font-bold text-primary text-center mb-6">{c.name}</h3>
+                <h3 className="text-xl font-bold text-primary text-center mb-6 hover:scale-110 transition-transform duration-300">{c.name}</h3>
                 <img 
                   src={c.lead.image} 
                   alt={c.lead.name} 
-                  className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-primary/20" 
+                  className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-primary/20 hover:border-primary hover:rotate-12 transition-all duration-500 hover:scale-110" 
                 />
-                <p className="text-lg font-medium text-center">{c.lead.name}</p>
+                <p className="text-lg font-medium text-center hover:text-primary transition-colors duration-300">{c.lead.name}</p>
                 <p className="text-sm text-muted-foreground text-center mt-2">Lead</p>
               </Card>
             ))}
