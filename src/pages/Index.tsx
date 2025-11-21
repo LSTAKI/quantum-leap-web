@@ -19,19 +19,19 @@ const Index = () => {
     { 
       name: "Dr. [Vice Chancellor Name]", 
       title: "Vice Chancellor, VTU", 
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop",
+      image: img src="/logo.png" alt="logo"
       message: "Welcome to Quantum Club VTU. We are committed to fostering innovation and excellence in quantum computing research and education."
     },
     { 
       name: "Prof. [Registrar Name]", 
       title: "Registrar, VTU", 
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop",
+      image: img src="/Registrar.png" alt="logo"
       message: "Supporting student initiatives like Quantum Club is essential for preparing our students for the technological challenges of tomorrow."
     },
     { 
       name: "Prof. [Registrar Evaluation Name]", 
       title: "Registrar (Evaluation), VTU", 
-      image: "https://images.unsplash.com/photo-1556157382-97eda2d62296?w=400&h=400&fit=crop",
+      image: img src="/logo.png" alt="logo",
       message: "The Quantum Club represents the cutting-edge of student-led research and innovation at VTU."
     },
     { 
