@@ -5,14 +5,17 @@ import { Link } from "react-router-dom";
 export const TopNav = () => {
   const navItems = [
     { label: "Home", href: "#hero", icon: Home },
+    { label: "About", href: "#about", icon: BookOpen },
     { label: "Events", href: "#events", icon: Calendar },
+    { label: "Team", href: "#committees", icon: Users },
     { label: "Resources", href: "#resources", icon: BookOpen },
     { label: "Blog", href: "#blog", icon: FileText },
     { label: "Nobel Prize", href: "#nobel", icon: Award },
     { label: "Podcast", href: "#podcast", icon: Mic },
-    { label: "Team", href: "#committees", icon: Users },
     { label: "Contact", href: "#contact", icon: Mail },
   ];
+
+  const googleFormLink = "https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform"; // Replace with actual form link
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
@@ -39,9 +42,9 @@ export const TopNav = () => {
         <Button
           size="sm"
           className="ml-2"
-          onClick={() => scrollToSection("#join")}
+          asChild
         >
-          Join
+          <a href={googleFormLink} target="_blank" rel="noopener noreferrer">Join</a>
         </Button>
       </div>
     </nav>

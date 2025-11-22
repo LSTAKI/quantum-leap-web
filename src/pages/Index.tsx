@@ -15,38 +15,44 @@ const Index = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedMember, setSelectedMember] = useState<{ name: string; role: string; description: string; image: string } | null>(null);
 
-  const universityLeadership = [
-    { 
-      name: "Dr. [Vice Chancellor Name]", 
-      title: "Vice Chancellor, VTU", 
-      image: "/logo.png",
-      message: "Welcome to Quantum Club VTU. We are committed to fostering innovation and excellence in quantum computing research and education."
-    },
-    { 
-      name: "Prof. [Registrar Name]", 
-      title: "Registrar, VTU", 
-      image: "/Registrar.png",
-      message: "Supporting student initiatives like Quantum Club is essential for preparing our students for the technological challenges of tomorrow."
-    },
-    { 
-      name: "Prof. [Registrar Evaluation Name]", 
-      title: "Registrar (Evaluation), VTU", 
-      image: "/logo.png",
-      message: "The Quantum Club represents the cutting-edge of student-led research and innovation at VTU."
-    },
-    { 
-      name: "Dr. [Finance Officer Name]", 
-      title: "Finance Officer, VTU", 
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop",
-      message: "We are proud to support student clubs that contribute to academic excellence and practical skill development."
-    },
-    { 
-      name: "Prof. [Student Welfare Dean Name]", 
-      title: "Dean of Student Welfare, VTU", 
-      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop",
-      message: "Student clubs like Quantum Club are vital in creating a vibrant campus culture focused on learning and collaboration."
-    },
-  ];
+  const universityLeadership = {
+    tier1: [
+      { 
+        name: "Dr. [Vice Chancellor Name]", 
+        title: "Vice Chancellor, VTU", 
+        image: "/logo.png",
+        message: "Welcome to Quantum Club VTU. We are committed to fostering innovation and excellence in quantum computing research and education."
+      }
+    ],
+    tier2: [
+      { 
+        name: "Prof. [Registrar Name]", 
+        title: "Registrar, VTU", 
+        image: "/Registrar.png",
+        message: "Supporting student initiatives like Quantum Club is essential for preparing our students for the technological challenges of tomorrow."
+      },
+      { 
+        name: "Prof. [Registrar Evaluation Name]", 
+        title: "Registrar (Evaluation), VTU", 
+        image: "/logo.png",
+        message: "The Quantum Club represents the cutting-edge of student-led research and innovation at VTU."
+      }
+    ],
+    tier3: [
+      { 
+        name: "Dr. [Finance Officer Name]", 
+        title: "Finance Officer, VTU", 
+        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop",
+        message: "We are proud to support student clubs that contribute to academic excellence and practical skill development."
+      },
+      { 
+        name: "Prof. [Student Welfare Dean Name]", 
+        title: "Dean of Student Welfare, VTU", 
+        image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop",
+        message: "Student clubs like Quantum Club are vital in creating a vibrant campus culture focused on learning and collaboration."
+      }
+    ]
+  };
 
   const events: any[] = [];
 
@@ -120,11 +126,16 @@ const Index = () => {
   ];
 
   const resources = [
-    { title: "Quantum Computing Basics", description: "Introductory materials", icon: BookOpen },
-    { title: "Qiskit Tutorials", description: "Hands-on coding tutorials", icon: Code },
-    { title: "Research Papers", description: "Latest research", icon: GraduationCap },
-    { title: "Project Ideas", description: "Project suggestions", icon: Lightbulb },
+    { title: "Quantum Computing Basics", description: "Introductory materials", icon: BookOpen, link: "https://example.com/resources" },
+    { title: "Qiskit Tutorials", description: "Hands-on coding tutorials", icon: Code, link: "https://example.com/tutorials" },
+    { title: "Research Papers", description: "Latest research", icon: GraduationCap, link: "https://example.com/papers" },
+    { title: "Project Ideas", description: "Project suggestions", icon: Lightbulb, link: "https://example.com/projects" },
   ];
+
+  const googleFormLink = "https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform"; // Replace with your actual Google Form link
+  const blogLink = "https://example.com/blog"; // Replace with your blog link
+  const podcastLink = "https://example.com/podcast"; // Replace with your podcast link
+  const nobelPrizeLink = "https://example.com/nobel"; // Replace with your Nobel Prize page link
 
   const recentBlogPosts = [
     { title: "Getting Started with Quantum Computing", excerpt: "A beginner's guide...", image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&h=600&fit=crop", date: "March 1, 2025", author: "Team" },
@@ -180,9 +191,39 @@ const Index = () => {
       <section className="py-24 px-4 bg-[#0F172A]/90">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-16 animate-fade-in hover:scale-110 transition-transform duration-500">University Leadership</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-2 justify-items-center">
-            {universityLeadership.map((l, i) => (
-              <Card key={i} className="p-6 w-full hover:scale-110 hover:shadow-2xl hover:shadow-primary/50 transition-all duration-500 animate-fade-in hover:z-10" style={{ animationDelay: `${i * 0.1}s` }}>
+          
+          {/* Tier 1 - Vice Chancellor */}
+          <div className="flex justify-center mb-6">
+            {universityLeadership.tier1.map((l, i) => (
+              <Card key={i} className="p-6 max-w-md hover:scale-110 hover:shadow-2xl hover:shadow-primary/50 transition-all duration-500 animate-fade-in hover:z-10" style={{ animationDelay: '0s' }}>
+                <img src={l.image} alt={l.name} className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-primary/20 hover:border-primary hover:rotate-12 transition-all duration-500 hover:scale-110" />
+                <h3 className="text-xl font-bold text-center mb-2 hover:text-primary transition-colors duration-300">{l.name}</h3>
+                <p className="text-sm text-primary text-center mb-4">{l.title}</p>
+                <div className="bg-muted/50 rounded-lg p-4 mt-4 hover:bg-primary/20 transition-all duration-500 hover:scale-105">
+                  <p className="text-sm text-muted-foreground italic text-center leading-relaxed hover:text-foreground transition-colors duration-300">"{l.message}"</p>
+                </div>
+              </Card>
+            ))}
+          </div>
+
+          {/* Tier 2 - Registrars */}
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-6">
+            {universityLeadership.tier2.map((l, i) => (
+              <Card key={i} className="p-6 hover:scale-110 hover:shadow-2xl hover:shadow-primary/50 transition-all duration-500 animate-fade-in hover:z-10" style={{ animationDelay: `${i * 0.1}s` }}>
+                <img src={l.image} alt={l.name} className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-primary/20 hover:border-primary hover:rotate-12 transition-all duration-500 hover:scale-110" />
+                <h3 className="text-xl font-bold text-center mb-2 hover:text-primary transition-colors duration-300">{l.name}</h3>
+                <p className="text-sm text-primary text-center mb-4">{l.title}</p>
+                <div className="bg-muted/50 rounded-lg p-4 mt-4 hover:bg-primary/20 transition-all duration-500 hover:scale-105">
+                  <p className="text-sm text-muted-foreground italic text-center leading-relaxed hover:text-foreground transition-colors duration-300">"{l.message}"</p>
+                </div>
+              </Card>
+            ))}
+          </div>
+
+          {/* Tier 3 - Finance Officer and Dean */}
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {universityLeadership.tier3.map((l, i) => (
+              <Card key={i} className="p-6 hover:scale-110 hover:shadow-2xl hover:shadow-primary/50 transition-all duration-500 animate-fade-in hover:z-10" style={{ animationDelay: `${(i + 2) * 0.1}s` }}>
                 <img src={l.image} alt={l.name} className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-primary/20 hover:border-primary hover:rotate-12 transition-all duration-500 hover:scale-110" />
                 <h3 className="text-xl font-bold text-center mb-2 hover:text-primary transition-colors duration-300">{l.name}</h3>
                 <p className="text-sm text-primary text-center mb-4">{l.title}</p>
@@ -195,7 +236,14 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="py-24 px-4 bg-[#020617]/90">
+      <section id="events" className="py-24 px-4 bg-[#0F172A]/90">
+        <div className="max-w-7xl mx-auto"><h2 className="text-4xl font-bold text-center mb-12">Events</h2>
+          <div className="flex justify-center gap-3 mb-12">{categories.map(c => <Button key={c} variant={selectedCategory === c ? "default" : "outline"} onClick={() => setSelectedCategory(c)}>{c}</Button>)}</div>
+          {filteredEvents.length === 0 && <Card className="p-12"><p className="text-center text-muted-foreground">No events scheduled. Check back soon!</p></Card>}
+        </div>
+      </section>
+
+      <section className="py-24 px-4 bg-[#020617]">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-16 animate-fade-in hover:scale-110 transition-transform duration-500">Faculty Advisors</h2>
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -208,13 +256,6 @@ const Index = () => {
               </Card>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section id="events" className="py-24 px-4 bg-[#0F172A]">
-        <div className="max-w-7xl mx-auto"><h2 className="text-4xl font-bold text-center mb-12">Events</h2>
-          <div className="flex justify-center gap-3 mb-12">{categories.map(c => <Button key={c} variant={selectedCategory === c ? "default" : "outline"} onClick={() => setSelectedCategory(c)}>{c}</Button>)}</div>
-          {filteredEvents.length === 0 && <Card className="p-12"><p className="text-center text-muted-foreground">No events scheduled. Check back soon!</p></Card>}
         </div>
       </section>
 
@@ -303,13 +344,15 @@ const Index = () => {
           <h2 className="text-4xl font-bold text-center mb-16">Learning Resources</h2>
           <div className="grid md:grid-cols-4 gap-6">
             {resources.map((r, i) => (
-              <Card key={i} className="p-6 text-center hover:scale-105 transition-transform duration-300">
-                <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                  <r.icon className="h-7 w-7 text-primary" />
-                </div>
-                <h3 className="text-lg font-bold mb-2">{r.title}</h3>
-                <p className="text-sm text-muted-foreground">{r.description}</p>
-              </Card>
+              <a key={i} href={r.link} target="_blank" rel="noopener noreferrer">
+                <Card className="p-6 text-center hover:scale-105 transition-transform duration-300 cursor-pointer">
+                  <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                    <r.icon className="h-7 w-7 text-primary" />
+                  </div>
+                  <h3 className="text-lg font-bold mb-2">{r.title}</h3>
+                  <p className="text-sm text-muted-foreground">{r.description}</p>
+                </Card>
+              </a>
             ))}
           </div>
         </div>
@@ -320,30 +363,72 @@ const Index = () => {
           <h2 className="text-4xl font-bold text-center mb-16">Latest from Our Blog</h2>
           <div className="grid md:grid-cols-2 gap-8">
             {recentBlogPosts.map((p, i) => (
-              <Card key={i} className="hover:scale-105 transition-transform duration-300">
-                <div className="aspect-video overflow-hidden">
-                  <img src={p.image} alt={p.title} className="w-full h-full object-cover" />
-                </div>
-                <CardHeader>
-                  <CardTitle>{p.title}</CardTitle>
-                  <CardDescription>{p.excerpt}</CardDescription>
-                </CardHeader>
-              </Card>
+              <a key={i} href={blogLink} target="_blank" rel="noopener noreferrer">
+                <Card className="hover:scale-105 transition-transform duration-300 cursor-pointer">
+                  <div className="aspect-video overflow-hidden">
+                    <img src={p.image} alt={p.title} className="w-full h-full object-cover" />
+                  </div>
+                  <CardHeader>
+                    <CardTitle>{p.title}</CardTitle>
+                    <CardDescription>{p.excerpt}</CardDescription>
+                  </CardHeader>
+                </Card>
+              </a>
             ))}
+          </div>
+          <div className="text-center mt-8">
+            <Button asChild>
+              <a href={blogLink} target="_blank" rel="noopener noreferrer">View All Posts</a>
+            </Button>
           </div>
         </div>
       </section>
 
       <section id="nobel" className="py-24 px-4 bg-[#0F172A]/90">
-        <div className="max-w-7xl mx-auto text-center">
-          <Award className="h-16 w-16 text-primary mx-auto mb-6" />
-          <h2 className="text-4xl font-bold mb-8">Nobel Prize in Quantum Computing</h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
-            Celebrating groundbreaking achievements in quantum computing and recognizing the pioneers who are shaping the future of technology.
-          </p>
-          <Card className="p-8 max-w-2xl mx-auto">
-            <p className="text-muted-foreground">Nobel Prize content and winners will be featured here. Check back soon for updates on quantum computing breakthroughs and their impact on science.</p>
-          </Card>
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <Award className="h-16 w-16 text-primary mx-auto mb-6" />
+            <h2 className="text-4xl font-bold mb-8">Nobel Prize in Quantum Computing</h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Celebrating groundbreaking achievements in quantum computing and recognizing the pioneers who are shaping the future of technology.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8 mb-8">
+            <Card className="p-6">
+              <div className="aspect-video overflow-hidden rounded-lg mb-4">
+                <img 
+                  src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&h=600&fit=crop" 
+                  alt="Nobel Prize" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <h3 className="text-2xl font-bold mb-4">Recent Nobel Laureates</h3>
+              <p className="text-muted-foreground mb-4">
+                The Nobel Prize in Physics 2022 was awarded to Alain Aspect, John F. Clauser, and Anton Zeilinger for their groundbreaking experiments with entangled photons, establishing the violation of Bell inequalities and pioneering quantum information science.
+              </p>
+            </Card>
+            
+            <Card className="p-6">
+              <div className="aspect-video overflow-hidden rounded-lg mb-4">
+                <img 
+                  src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop" 
+                  alt="Quantum Computing Research" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <h3 className="text-2xl font-bold mb-4">Impact on Quantum Computing</h3>
+              <p className="text-muted-foreground mb-4">
+                Their pioneering work on quantum entanglement has laid the foundation for quantum cryptography, quantum teleportation, and quantum computing, revolutionizing our understanding of quantum mechanics and its practical applications.
+              </p>
+            </Card>
+          </div>
+          
+          <div className="text-center">
+            <Button asChild>
+              <a href={nobelPrizeLink} target="_blank" rel="noopener noreferrer">Learn More About Nobel Prize Winners</a>
+            </Button>
+          </div>
         </div>
       </section>
 
@@ -355,14 +440,24 @@ const Index = () => {
             Tune in to our podcast series featuring discussions on quantum computing, interviews with researchers, and insights into the latest developments in the field.
           </p>
           <Card className="p-8 max-w-2xl mx-auto">
-            <p className="text-muted-foreground">Podcast episodes coming soon! Subscribe to stay updated on our latest quantum computing discussions and expert interviews.</p>
+            <p className="text-muted-foreground mb-6">Podcast episodes coming soon! Subscribe to stay updated on our latest quantum computing discussions and expert interviews.</p>
+            <Button asChild>
+              <a href={podcastLink} target="_blank" rel="noopener noreferrer">Listen to Our Podcast</a>
+            </Button>
           </Card>
         </div>
       </section>
 
 
       <section id="contact" className="py-24 px-4 bg-[#020617]">
-        <div className="max-w-4xl mx-auto text-center"><h2 className="text-4xl font-bold mb-12">Get in Touch</h2><Button size="lg"><Mail className="mr-2 h-5 w-5" />Send us a Message</Button></div>
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl font-bold mb-12">Get in Touch</h2>
+          <Button size="lg" asChild>
+            <a href={googleFormLink} target="_blank" rel="noopener noreferrer">
+              <Mail className="mr-2 h-5 w-5" />Send us a Message
+            </a>
+          </Button>
+        </div>
       </section>
 
       <footer className="py-12 px-4 bg-[#020617] border-t border-primary/20">
