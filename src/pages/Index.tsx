@@ -244,6 +244,12 @@ const Index = () => {
       </section>
 
       <section className="py-24 px-4 bg-[#020617]">
+        <div className="max-w-7xl mx-auto"><h2 className="text-4xl font-bold text-center mb-16">Quantum Club VTU in Action</h2>
+          <div className="grid md:grid-cols-3 gap-6">{[event1, event2, event3].map((img, i) => <div key={i} className="aspect-video rounded-lg overflow-hidden"><img src={img} alt={`Event ${i+1}`} className="w-full h-full object-cover" /></div>)}</div>
+        </div>
+      </section>
+
+      <section className="py-24 px-4 bg-[#0F172A]/90">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-16 animate-fade-in hover:scale-110 transition-transform duration-500">Faculty Advisors</h2>
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -256,12 +262,6 @@ const Index = () => {
               </Card>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="py-24 px-4 bg-[#020617]">
-        <div className="max-w-7xl mx-auto"><h2 className="text-4xl font-bold text-center mb-16">Quantum Club VTU in Action</h2>
-          <div className="grid md:grid-cols-3 gap-6">{[event1, event2, event3].map((img, i) => <div key={i} className="aspect-video rounded-lg overflow-hidden"><img src={img} alt={`Event ${i+1}`} className="w-full h-full object-cover" /></div>)}</div>
         </div>
       </section>
 
