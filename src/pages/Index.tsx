@@ -384,50 +384,86 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="nobel" className="py-24 px-4 bg-[#0F172A]/90">
+      <section id="achievers" className="py-24 px-4 bg-[#0F172A]/90">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <Award className="h-16 w-16 text-primary mx-auto mb-6" />
-            <h2 className="text-4xl font-bold mb-8">Nobel Prize in Quantum Computing</h2>
+            <h2 className="text-4xl font-bold mb-8">Our Achievers</h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Celebrating groundbreaking achievements in quantum computing and recognizing the pioneers who are shaping the future of technology.
+              Celebrating excellence and innovation from quantum computing pioneers worldwide and our talented campus community.
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-8 mb-8">
-            <Card className="p-6">
-              <div className="aspect-video overflow-hidden rounded-lg mb-4">
-                <img 
-                  src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&h=600&fit=crop" 
-                  alt="Nobel Prize" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <h3 className="text-2xl font-bold mb-4">Recent Nobel Laureates</h3>
-              <p className="text-muted-foreground mb-4">
-                The Nobel Prize in Physics 2022 was awarded to Alain Aspect, John F. Clauser, and Anton Zeilinger for their groundbreaking experiments with entangled photons, establishing the violation of Bell inequalities and pioneering quantum information science.
-              </p>
-            </Card>
-            
-            <Card className="p-6">
-              <div className="aspect-video overflow-hidden rounded-lg mb-4">
-                <img 
-                  src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop" 
-                  alt="Quantum Computing Research" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <h3 className="text-2xl font-bold mb-4">Impact on Quantum Computing</h3>
-              <p className="text-muted-foreground mb-4">
-                Their pioneering work on quantum entanglement has laid the foundation for quantum cryptography, quantum teleportation, and quantum computing, revolutionizing our understanding of quantum mechanics and its practical applications.
-              </p>
-            </Card>
+          {/* Worldwide Achievers */}
+          <div className="mb-16">
+            <h3 className="text-3xl font-bold text-center mb-8 text-primary">Worldwide Achievers</h3>
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+                {
+                  name: "Dr. John Doe",
+                  image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop",
+                  description: "Pioneering research in quantum entanglement and quantum cryptography, with groundbreaking contributions to quantum information theory."
+                },
+                {
+                  name: "Prof. Jane Smith",
+                  image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop",
+                  description: "Leading expert in quantum algorithms and quantum machine learning, revolutionizing computational approaches in quantum systems."
+                },
+                {
+                  name: "Dr. Michael Chen",
+                  image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
+                  description: "Innovator in quantum hardware development and superconducting qubit systems, advancing quantum computing infrastructure."
+                }
+              ].map((achiever, i) => (
+                <Card key={i} className="p-6 hover:scale-105 transition-transform duration-300">
+                  <div className="aspect-square overflow-hidden rounded-lg mb-4">
+                    <img 
+                      src={achiever.image} 
+                      alt={achiever.name} 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <h4 className="text-xl font-bold mb-3 text-center">{achiever.name}</h4>
+                  <p className="text-sm text-muted-foreground text-center">{achiever.description}</p>
+                </Card>
+              ))}
+            </div>
           </div>
           
-          <div className="text-center">
-            <Button asChild>
-              <a href={nobelPrizeLink} target="_blank" rel="noopener noreferrer">Learn More About Nobel Prize Winners</a>
-            </Button>
+          {/* Campus Achievers */}
+          <div>
+            <h3 className="text-3xl font-bold text-center mb-8 text-primary">Campus Achievers</h3>
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+                {
+                  name: "Student Name 1",
+                  image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop",
+                  description: "Winner of National Quantum Computing Hackathon 2024, developed innovative quantum algorithm for optimization problems."
+                },
+                {
+                  name: "Student Name 2",
+                  image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop",
+                  description: "Published research paper in prestigious quantum computing journal, contributing to quantum error correction methods."
+                },
+                {
+                  name: "Student Name 3",
+                  image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400&h=400&fit=crop",
+                  description: "Secured internship at leading quantum computing company, representing VTU at international quantum symposium."
+                }
+              ].map((achiever, i) => (
+                <Card key={i} className="p-6 hover:scale-105 transition-transform duration-300">
+                  <div className="aspect-square overflow-hidden rounded-lg mb-4">
+                    <img 
+                      src={achiever.image} 
+                      alt={achiever.name} 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <h4 className="text-xl font-bold mb-3 text-center">{achiever.name}</h4>
+                  <p className="text-sm text-muted-foreground text-center">{achiever.description}</p>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
       </section>
