@@ -10,7 +10,7 @@ export const TopNav = () => {
     { label: "Team", href: "#committees", icon: Users },
     { label: "Resources", href: "#resources", icon: BookOpen },
     { label: "Blog", href: "#blog", icon: FileText },
-    { label: "Nobel Prize", href: "#nobel", icon: Award },
+    { label: "Achievers", href: "#achievers", icon: Award },
     { label: "Podcast", href: "#podcast", icon: Mic },
     { label: "Contact", href: "#contact", icon: Mail },
   ];
