@@ -78,6 +78,31 @@ const Index = () => {
       name: "Microsoft Azure Quantum",
       logo: "https://images.unsplash.com/photo-1617886322235-32299e6f88ed?w=400&h=300&fit=crop",
       description: "Cloud quantum computing platform delivering access to diverse quantum hardware and software solutions."
+    },
+    {
+      name: "AWS Braket",
+      logo: "https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?w=400&h=300&fit=crop",
+      description: "Amazon's quantum computing service enabling researchers and developers to explore and experiment with quantum algorithms."
+    },
+    {
+      name: "Rigetti Computing",
+      logo: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=300&fit=crop",
+      description: "Full-stack quantum computing company building quantum processors and providing quantum computing infrastructure."
+    },
+    {
+      name: "IonQ",
+      logo: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&h=300&fit=crop",
+      description: "Developing advanced trapped-ion quantum computers with industry-leading gate fidelities and quantum volume."
+    },
+    {
+      name: "D-Wave Systems",
+      logo: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&h=300&fit=crop",
+      description: "Pioneering quantum annealing systems focused on solving complex optimization and machine learning problems."
+    },
+    {
+      name: "Xanadu",
+      logo: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=400&h=300&fit=crop",
+      description: "Photonic quantum computing company developing silicon-based quantum processors and open-source software tools."
     }
   ];
 
@@ -539,7 +564,7 @@ const Index = () => {
       <section id="partners" className="py-24 px-4 bg-[#0F172A]/90">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-16">Our Partners</h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {partners.map((partner, i) => (
               <Card key={i} className="p-6 hover:scale-105 transition-transform duration-300">
                 <div className="aspect-video overflow-hidden rounded-lg mb-4 bg-muted/50 flex items-center justify-center">
