@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Instagram, Linkedin, Twitter, Github, Mail, Calendar, MapPin, ChevronDown, MessageCircle, MessageSquare, Code, GraduationCap, Lightbulb, FileText, BookOpen, Award, Mic } from "lucide-react";
+import { Instagram, Linkedin, Twitter, Github, Mail, Calendar, MapPin, ChevronDown, MessageCircle, MessageSquare, Code, GraduationCap, Lightbulb, FileText, BookOpen, Award, Mic, TrendingUp } from "lucide-react";
 import { useState } from "react";
 import quantumHero from "@/assets/quantum-hero.png";
 import event1 from "@/assets/event1.jpg";
@@ -182,6 +182,7 @@ const Index = () => {
     { title: "Qiskit Tutorials", description: "Hands-on coding tutorials", icon: Code, link: "https://example.com/tutorials" },
     { title: "Research Papers", description: "Latest research", icon: GraduationCap, link: "https://example.com/papers" },
     { title: "Project Ideas", description: "Project suggestions", icon: Lightbulb, link: "https://example.com/projects" },
+    { title: "Future Trends", description: "Emerging quantum technologies", icon: TrendingUp, link: "https://example.com/trends" },
   ];
 
   const googleFormLink = "https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform"; // Replace with your actual Google Form link
@@ -418,7 +419,7 @@ const Index = () => {
       <section id="resources" className="py-24 px-4 bg-[#0F172A]/90">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-16">Learning Resources</h2>
-          <div className="grid md:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-6">
             {resources.map((r, i) => (
               <a key={i} href={r.link} target="_blank" rel="noopener noreferrer">
                 <Card className="p-6 text-center hover:scale-105 transition-transform duration-300 cursor-pointer">
