@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Home, Calendar, BookOpen, FileText, Users, Mail, Award, Mic } from "lucide-react";
+import { Home, Calendar, BookOpen, FileText, Users, Mail, Award, Mic, Handshake } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export const TopNav = () => {
@@ -12,6 +12,7 @@ export const TopNav = () => {
     { label: "Blog", href: "#blog", icon: FileText },
     { label: "Achievers", href: "#achievers", icon: Award },
     { label: "Podcast", href: "#podcast", icon: Mic },
+    { label: "Partners", href: "#partners", icon: Handshake },
     { label: "Contact", href: "#contact", icon: Mail },
   ];
 
