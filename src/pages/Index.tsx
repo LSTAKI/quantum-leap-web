@@ -44,15 +44,42 @@ const Index = () => {
         title: "Finance Officer, VTU", 
         image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop",
         message: "We are proud to support student clubs that contribute to academic excellence and practical skill development."
-      },
-      { 
-        name: "Prof. [Student Welfare Dean Name]", 
-        title: "Dean of Student Welfare, VTU", 
-        image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop",
-        message: "Student clubs like Quantum Club are vital in creating a vibrant campus culture focused on learning and collaboration."
       }
     ]
   };
+
+  const clubLeadership = {
+    chiefCoordinator: {
+      name: "[Chief Coordinator Name]",
+      title: "Chief Coordinator, Students' Club",
+      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop",
+      message: "Leading the Students' Club initiatives with dedication to fostering student engagement and excellence."
+    },
+    staffCoordinator: {
+      name: "[Staff Coordinator Name]",
+      title: "Staff Coordinator, Students' Club",
+      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop",
+      message: "Supporting and mentoring students to achieve their goals through collaborative club activities."
+    }
+  };
+
+  const partners = [
+    {
+      name: "IBM Quantum",
+      logo: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&h=300&fit=crop",
+      description: "Leading quantum computing technology partner providing cloud-based quantum systems and educational resources."
+    },
+    {
+      name: "Google Quantum AI",
+      logo: "https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=400&h=300&fit=crop",
+      description: "Pioneering quantum computing research and development, offering quantum programming tools and frameworks."
+    },
+    {
+      name: "Microsoft Azure Quantum",
+      logo: "https://images.unsplash.com/photo-1617886322235-32299e6f88ed?w=400&h=300&fit=crop",
+      description: "Cloud quantum computing platform delivering access to diverse quantum hardware and software solutions."
+    }
+  ];
 
   const events: any[] = [];
 
@@ -220,10 +247,10 @@ const Index = () => {
             ))}
           </div>
 
-          {/* Tier 3 - Finance Officer and Dean */}
-          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          {/* Tier 3 - Finance Officer (centered) */}
+          <div className="flex justify-center">
             {universityLeadership.tier3.map((l, i) => (
-              <Card key={i} className="p-6 hover:scale-110 hover:shadow-2xl hover:shadow-primary/50 transition-all duration-500 animate-fade-in hover:z-10" style={{ animationDelay: `${(i + 2) * 0.1}s` }}>
+              <Card key={i} className="p-6 max-w-md hover:scale-110 hover:shadow-2xl hover:shadow-primary/50 transition-all duration-500 animate-fade-in hover:z-10" style={{ animationDelay: `${(i + 2) * 0.1}s` }}>
                 <img src={l.image} alt={l.name} className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-primary/20 hover:border-primary hover:rotate-12 transition-all duration-500 hover:scale-110" />
                 <h3 className="text-xl font-bold text-center mb-2 hover:text-primary transition-colors duration-300">{l.name}</h3>
                 <p className="text-sm text-primary text-center mb-4">{l.title}</p>
@@ -250,6 +277,30 @@ const Index = () => {
       </section>
 
       <section className="py-24 px-4 bg-[#0F172A]/90">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-16 animate-fade-in hover:scale-110 transition-transform duration-500">VTU Students' Club Leadership</h2>
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <Card className="p-6 hover:scale-110 hover:shadow-2xl hover:shadow-primary/50 transition-all duration-500 animate-fade-in hover:z-10">
+              <img src={clubLeadership.chiefCoordinator.image} alt={clubLeadership.chiefCoordinator.name} className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-primary/20 hover:border-primary hover:rotate-12 transition-all duration-500 hover:scale-110" />
+              <h3 className="text-xl font-bold text-center mb-2 hover:text-primary transition-colors duration-300">{clubLeadership.chiefCoordinator.name}</h3>
+              <p className="text-sm text-primary text-center mb-4">{clubLeadership.chiefCoordinator.title}</p>
+              <div className="bg-muted/50 rounded-lg p-4 mt-4 hover:bg-primary/20 transition-all duration-500 hover:scale-105">
+                <p className="text-sm text-muted-foreground italic text-center leading-relaxed hover:text-foreground transition-colors duration-300">"{clubLeadership.chiefCoordinator.message}"</p>
+              </div>
+            </Card>
+            <Card className="p-6 hover:scale-110 hover:shadow-2xl hover:shadow-primary/50 transition-all duration-500 animate-fade-in hover:z-10" style={{ animationDelay: '0.1s' }}>
+              <img src={clubLeadership.staffCoordinator.image} alt={clubLeadership.staffCoordinator.name} className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-primary/20 hover:border-primary hover:rotate-12 transition-all duration-500 hover:scale-110" />
+              <h3 className="text-xl font-bold text-center mb-2 hover:text-primary transition-colors duration-300">{clubLeadership.staffCoordinator.name}</h3>
+              <p className="text-sm text-primary text-center mb-4">{clubLeadership.staffCoordinator.title}</p>
+              <div className="bg-muted/50 rounded-lg p-4 mt-4 hover:bg-primary/20 transition-all duration-500 hover:scale-105">
+                <p className="text-sm text-muted-foreground italic text-center leading-relaxed hover:text-foreground transition-colors duration-300">"{clubLeadership.staffCoordinator.message}"</p>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 px-4 bg-[#020617]">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-16 animate-fade-in hover:scale-110 transition-transform duration-500">Faculty Advisors</h2>
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -485,6 +536,27 @@ const Index = () => {
       </section>
 
 
+      <section id="partners" className="py-24 px-4 bg-[#0F172A]/90">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-16">Our Partners</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {partners.map((partner, i) => (
+              <Card key={i} className="p-6 hover:scale-105 transition-transform duration-300">
+                <div className="aspect-video overflow-hidden rounded-lg mb-4 bg-muted/50 flex items-center justify-center">
+                  <img 
+                    src={partner.logo} 
+                    alt={partner.name} 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <h3 className="text-xl font-bold mb-3 text-center">{partner.name}</h3>
+                <p className="text-sm text-muted-foreground text-center">{partner.description}</p>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section id="contact" className="py-24 px-4 bg-[#020617]">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold mb-12">Get in Touch</h2>
@@ -497,7 +569,7 @@ const Index = () => {
       </section>
 
       <footer className="py-12 px-4 bg-[#020617] border-t border-primary/20">
-        <div className="max-w-7xl mx-auto text-center text-sm text-muted-foreground"><p>© 2024 Quantum Club VTU. All rights reserved.</p></div>
+        <div className="max-w-7xl mx-auto text-center text-sm text-muted-foreground"><p>© 2025 Quantum Club VTU. All rights reserved.</p></div>
       </footer>
     </div>
   );
